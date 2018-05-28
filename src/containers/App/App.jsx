@@ -8,9 +8,10 @@ import './App.css'
 
 class App extends Component {
   componentDidMount() {
-    const { fetchArticles } = this.props
+    const { fetchArticles, fetchArticleById } = this.props
 
     fetchArticles()
+    fetchArticleById()
   }
 
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
 
 App.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
+  fetchArticleById: PropTypes.func.isRequired,
 }
 
 export default connect(
