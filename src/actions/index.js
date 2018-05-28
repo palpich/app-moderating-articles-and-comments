@@ -2,6 +2,8 @@ export const FETCHING_ARTICLES = 'FETCHING_ARTICLES'
 export const FETCHED_ARTICLES = 'FETCHED_ARTICLES'
 export const FETCHING_ARTICLE_BY_ID = 'FETCHING_ARTICLE_BY_ID'
 export const FETCHED_ARTICLE_BY_ID = 'FETCHED_ARTICLE_BY_ID'
+export const UPDATED_COMMENT = 'UPDATED_COMMENT'
+export const UPDATED_USER_INFO = 'UPDATED_USER_INFO'
 
 function fetchingArticles() {
   return {
@@ -98,6 +100,34 @@ export function fetchArticleById(id) {
           },
         ],
       }))
+    }, 1000)
+  }
+}
+
+function updatedComment() {
+  return {
+    type: UPDATED_COMMENT,
+  }
+}
+
+function updateCommentById() {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(updatedComment())
+    }, 1000)
+  }
+}
+
+function updatedUserInfo() {
+  return {
+    type: UPDATED_USER_INFO
+  }
+}
+
+function updateUserInfo() {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(updatedUserInfo())
     }, 1000)
   }
 }
