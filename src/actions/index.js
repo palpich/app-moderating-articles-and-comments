@@ -118,7 +118,7 @@ function updatedComment() {
   }
 }
 
-function updateCommentById() {
+export function updateCommentById({ id, text }) {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(updatedComment())
@@ -132,7 +132,7 @@ function updatedUserInfo() {
   }
 }
 
-function updateUserInfo() {
+export function updateUserInfo() {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(updatedUserInfo())

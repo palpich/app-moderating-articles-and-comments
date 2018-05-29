@@ -1,26 +1,23 @@
 import React from 'react'
 import { Comment, Header, Segment } from 'semantic-ui-react'
+import CommentItem from 'appComponents/CommentItem/CommentItem'
 
 function ArticleComments(props) {
-  const { comments } = props
-
-  const CommentList = comments.map(comment => (
-    <Comment key={comment.id} >
-      <Comment.Author>{comment.commenter.name}</Comment.Author>
-      <Comment.Text>{comment.text}</Comment.Text>
-      <Comment.Actions>
-        <Comment.Action>
-          Edit
-        </Comment.Action>
-      </Comment.Actions>
-    </Comment>
-  ))
+  const { comments, updateCommentById } = props
 
   return (
     <Segment>
       <Comment.Group>
         <Header as="h3" dividing>Comments</Header>
-        {CommentList}
+
+        {comments.map(comment => (
+          <CommentItem
+            comment={comment}
+            updateCommentById={updateCommentById}
+            key={comment.id}
+          />
+          ))}
+
       </Comment.Group>
     </Segment>
   )

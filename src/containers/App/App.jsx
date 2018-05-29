@@ -17,7 +17,11 @@ class App extends Component {
   }
 
   render() {
-    const { articles, selectedArticles } = this.props
+    const {
+      articles,
+      selectedArticles,
+      updateCommentById,
+    } = this.props
 
     return (
       <div className="App">
@@ -25,7 +29,7 @@ class App extends Component {
         <div className="App-content">
           <Header as="h2" icon="beer" content="Feed" />
           <Divider hidden />
-          <FeedArticles articles={articles} />
+          <FeedArticles articles={articles} updateCommentById={updateCommentById} />
         </div>
       </div>
     )
@@ -35,6 +39,7 @@ class App extends Component {
 App.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   fetchArticleById: PropTypes.func.isRequired,
+  updateCommentById: PropTypes.func.isRequired,
   articles: PropTypes.object,
 }
 
