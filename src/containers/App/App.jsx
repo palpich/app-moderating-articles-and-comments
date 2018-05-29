@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Header, Divider, Container } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+
 import * as actionCreators from 'appActions'
-import logo from './logo.svg'
 import './App.css'
+import FeedArticles from 'appComponents/FeedArticles/FeedArticles'
 
 class App extends Component {
   componentDidMount() {
@@ -15,15 +17,16 @@ class App extends Component {
   }
 
   render() {
+    const { articles, selectedArticles } = this.props
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-header" />
+        <div className="App-content">
+          <Header as="h2" icon="beer" content="Feed" />
+          <Divider hidden />
+          <FeedArticles articles={articles} />
+        </div>
       </div>
     )
   }
@@ -32,6 +35,7 @@ class App extends Component {
 App.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   fetchArticleById: PropTypes.func.isRequired,
+  articles: PropTypes.object,
 }
 
 export default connect(
