@@ -132,7 +132,7 @@ function updatedUserInfo() {
   }
 }
 
-export function updateUserInfo() {
+export function updateUserInfo({ id, name }) {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(updatedUserInfo())

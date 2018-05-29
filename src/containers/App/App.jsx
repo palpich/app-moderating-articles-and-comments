@@ -21,6 +21,7 @@ class App extends Component {
       articles,
       selectedArticles,
       updateCommentById,
+      updateUserInfo,
     } = this.props
 
     return (
@@ -29,7 +30,11 @@ class App extends Component {
         <div className="App-content">
           <Header as="h2" icon="beer" content="Feed" />
           <Divider hidden />
-          <FeedArticles articles={articles} updateCommentById={updateCommentById} />
+          <FeedArticles
+            articles={articles}
+            updateCommentById={updateCommentById}
+            updateUserInfo={updateUserInfo}
+          />
         </div>
       </div>
     )
@@ -40,6 +45,7 @@ App.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   fetchArticleById: PropTypes.func.isRequired,
   updateCommentById: PropTypes.func.isRequired,
+  updateUserInfo: PropTypes.func.isRequired,
   articles: PropTypes.object,
 }
 

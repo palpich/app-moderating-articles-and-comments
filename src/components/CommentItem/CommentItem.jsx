@@ -1,36 +1,54 @@
 import React, { Component } from 'react'
-import { Comment, Header, Segment, Form, Button } from 'semantic-ui-react'
+import { Comment, Form, Button } from 'semantic-ui-react'
 
 class CommentItem extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      value: '',
-      isEditing: false,
+      valueComment: '',
+      valueAuthor: '',
+      isEditingComment: false,
+      isUpdatingAuthor: false,
     }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChangeComment = this.handleChangeComment.bind(this)
+    this.handleChangeAuthor = this.handleChangeAuthor.bind(this)
     this.handleUpdateComment = this.handleUpdateComment.bind(this)
+    this.handleUpdateAuthor = this.handleUpdateAuthor.bind(this)
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value })
+  handleChangeComment(e) {
+    this.setState({ valueComment: e.target.value })
+  }
+
+  handleChangeAuthor(e) {
+    this.setState({ valueAuthor: e.target.value })
   }
 
   handleUpdateComment() {
     const { comment, updateCommentById } = this.props
-    const { value } = this.state
+    const { valueComment } = this.state
 
     updateCommentById({
       id: comment.id,
-      text: value,
+      text: valueComment,
+    })
+  }
+
+  handleUpdateAuthor() {
+    const { comment, updateUserInfo } = this.props
+    const { valueAuthor } = this.state
+
+    updateUserInfo({
+      id: comment.commenter.id,
+      name: valueAuthor,
     })
   }
 
   render() {
     const { comment } = this.props
-    const { isEditing } = this.state
+    const { isEditingComment, isUpdatingAuthor } = this.state
 
     return (
       <Comment>
@@ -38,16 +56,26 @@ class CommentItem extends Component {
         <Comment.Text>{comment.text}</Comment.Text>
         <Comment.Actions>
           <Comment.Action
-            onClick={() => this.setState({ isEditing: !isEditing })}
-            content="Edit"
+            onClick={() => this.setState({
+              isEditingComment: !isEditingComment,
+              isUpdatingAuthor: false,
+            })}
+            content="Edit comment"
+          />
+          <Comment.Action
+            onClick={() => this.setState({
+              isUpdatingAuthor: !isUpdatingAuthor,
+              isEditingComment: false,
+            })}
+            content="Update author"
           />
         </Comment.Actions>
 
-        {isEditing &&
+        {isEditingComment &&
         <Form reply>
           <Form.TextArea
-            value={this.state.value}
-            onChange={this.handleChange}
+            value={this.state.valueComment}
+            onChange={this.handleChangeComment}
           />
           <Button
             content="Save comment"
@@ -55,6 +83,21 @@ class CommentItem extends Component {
             icon="edit"
             primary
             onClick={this.handleUpdateComment}
+          />
+        </Form>}
+
+        {isUpdatingAuthor &&
+        <Form reply>
+          <Form.Input
+            value={this.state.valueAuthor}
+            onChange={this.handleChangeAuthor}
+          />
+          <Button
+            content="Save author"
+            labelPosition="left"
+            icon="edit"
+            primary
+            onClick={this.handleUpdateAuthor}
           />
         </Form>}
 

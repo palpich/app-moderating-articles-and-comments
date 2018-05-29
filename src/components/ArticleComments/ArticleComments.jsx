@@ -3,7 +3,7 @@ import { Comment, Header, Segment } from 'semantic-ui-react'
 import CommentItem from 'appComponents/CommentItem/CommentItem'
 
 function ArticleComments(props) {
-  const { comments, updateCommentById } = props
+  const { comments, updateCommentById, updateUserInfo } = props
 
   return (
     <Segment>
@@ -14,6 +14,7 @@ function ArticleComments(props) {
           <CommentItem
             comment={comment}
             updateCommentById={updateCommentById}
+            updateUserInfo={updateUserInfo}
             key={comment.id}
           />
           ))}
