@@ -39,6 +39,14 @@ export function fetchArticles() {
               name: 'John Galt',
             },
           },
+          {
+            id: '2',
+            text: 'Paris is so cool!',
+            commenter: {
+              id: '2',
+              name: 'John Galt',
+            },
+          },
         ],
       },
       {
@@ -120,7 +128,7 @@ function updateCommentById() {
 
 function updatedUserInfo() {
   return {
-    type: UPDATED_USER_INFO
+    type: UPDATED_USER_INFO,
   }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Header, Divider } from 'semantic-ui-react'
+import ArticleComments from 'appComponents/ArticleComments/ArticleComments'
 
 function FeedArticles(props) {
   const { articles } = props
@@ -11,6 +12,7 @@ function FeedArticles(props) {
         <Header as="h2">{event.title}</Header>
         <p>{event.text}</p>
       </Container>
+      <ArticleComments comments={event.comments} />
       <Divider
         section
         hidden={arr.length === index + 1}

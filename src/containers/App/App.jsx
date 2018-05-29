@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Header, Divider, Container } from 'semantic-ui-react'
+import { Header, Divider } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 import * as actionCreators from 'appActions'
