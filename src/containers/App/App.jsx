@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Header, Divider } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import * as actionCreators from 'appActions'
-import './App.css'
 import FeedArticles from 'appComponents/FeedArticles/FeedArticles'
+import './App.css'
 
 class App extends Component {
   componentDidMount() {

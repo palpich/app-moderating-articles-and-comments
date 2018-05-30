@@ -85,7 +85,7 @@ function fetchedArticleById(selectedArticle) {
   }
 }
 
-export function fetchArticleById(id) {
+export function fetchArticleById(id) { // eslint-disable-line no-unused-vars
   return (dispatch) => {
     dispatch(fetchingArticleById())
     setTimeout(() => {
@@ -118,7 +118,7 @@ function updatedComment() {
   }
 }
 
-export function updateCommentById({ id, text }) {
+export function updateCommentById({ id, text }) { // eslint-disable-line no-unused-vars
   return (dispatch) => {
     setTimeout(() => {
       dispatch(updatedComment())
@@ -132,7 +132,7 @@ function updatedUserInfo() {
   }
 }
 
-export function updateUserInfo({ id, name }) {
+export function updateUserInfo({ id, name }) { // eslint-disable-line no-unused-vars
   return (dispatch) => {
     setTimeout(() => {
       dispatch(updatedUserInfo())
