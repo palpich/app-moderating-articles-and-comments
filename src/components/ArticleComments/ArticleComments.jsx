@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Comment, Header, Segment } from 'semantic-ui-react'
 import CommentItem from 'appComponents/CommentItem/CommentItem'
 
 function ArticleComments(props) {
-  const { comments, updateCommentById, updateUserInfo } = props
+  const { comments } = props
 
   return (
     <Segment>
@@ -13,15 +14,22 @@ function ArticleComments(props) {
         {comments.map(comment => (
           <CommentItem
             comment={comment}
-            updateCommentById={updateCommentById}
-            updateUserInfo={updateUserInfo}
             key={comment.id}
+            {...props}
           />
           ))}
 
       </Comment.Group>
     </Segment>
   )
+}
+
+ArticleComments.propTypes = {
+  comments: PropTypes.arrayOf(PropTypes.object),
+}
+
+ArticleComments.defaultProps = {
+  comments: [],
 }
 
 export default ArticleComments

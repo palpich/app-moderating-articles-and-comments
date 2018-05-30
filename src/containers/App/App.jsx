@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Header, Divider } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-
 import * as actionCreators from 'appActions'
 import './App.css'
 import FeedArticles from 'appComponents/FeedArticles/FeedArticles'
@@ -19,7 +18,6 @@ class App extends Component {
   render() {
     const {
       articles,
-      selectedArticles,
       updateCommentById,
       updateUserInfo,
     } = this.props
@@ -46,7 +44,17 @@ App.propTypes = {
   fetchArticleById: PropTypes.func.isRequired,
   updateCommentById: PropTypes.func.isRequired,
   updateUserInfo: PropTypes.func.isRequired,
-  articles: PropTypes.object,
+  articles: PropTypes.shape({
+    list: PropTypes.array,
+    isFetching: PropTypes.bool,
+  }),
+}
+
+App.defaultProps = {
+  articles: {
+    list: [],
+    isFetching: false,
+  },
 }
 
 export default connect(

@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Container, Header, Divider } from 'semantic-ui-react'
 import ArticleComments from 'appComponents/ArticleComments/ArticleComments'
 
 function FeedArticles(props) {
-  const { articles, updateCommentById, updateUserInfo } = props
+  const { articles: { list } } = props
 
-  const FeedEvent = articles.list.map((event, index, arr) => (
+  const FeedEvent = list.map((event, index, arr) => (
     <div key={event.id}>
       <Header as="h4" icon="user circle outline" content={event.author.name} />
       <Container text>
@@ -14,8 +15,7 @@ function FeedArticles(props) {
       </Container>
       <ArticleComments
         comments={event.comments}
-        updateCommentById={updateCommentById}
-        updateUserInfo={updateUserInfo}
+        {...props}
       />
       <Divider
         section
@@ -29,6 +29,18 @@ function FeedArticles(props) {
       {FeedEvent}
     </div>
   )
+}
+
+FeedArticles.propTypes = {
+  articles: PropTypes.shape({
+    list: PropTypes.arrayOf(PropTypes.object),
+  }),
+}
+
+FeedArticles.defaultProps = {
+  articles: {
+    list: [],
+  },
 }
 
 export default FeedArticles

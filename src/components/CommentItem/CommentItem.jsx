@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Comment, Form, Button } from 'semantic-ui-react'
 
 class CommentItem extends Component {
@@ -104,6 +105,19 @@ class CommentItem extends Component {
       </Comment>
     )
   }
+}
+
+CommentItem.propTypes = {
+  comment: PropTypes.shape({
+    id: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  updateCommentById: PropTypes.func.isRequired,
+  updateUserInfo: PropTypes.func.isRequired,
+}
+
+CommentItem.defaultProps = {
+  comment: {},
 }
 
 export default CommentItem
